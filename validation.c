@@ -55,13 +55,11 @@ void	valid_number(t_stack **stack)
 {
 	t_stack			*current;
 	t_stack			*head;
-	long int		n;
 
 	head = *stack;
 	while (head)
 	{
-		n = head->number;
-		if (n > INT_MAX)
+		if (head->number > INT_MAX)
 		{
 			free_stack(stack);
 			ft_error("ERROR");
@@ -69,7 +67,7 @@ void	valid_number(t_stack **stack)
 		current = head->next;
 		while (current)
 		{
-			if (n == current->number)
+			if (head->number == current->number)
 			{
 				free_stack(stack);
 				ft_error("ERROR");

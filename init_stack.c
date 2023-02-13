@@ -28,6 +28,10 @@ void	free_stack(t_stack **stack)
 {
 	t_stack	*temp;
 
+	if (!*stack)
+		return ;
+	if ((*stack)->previous)
+		(*stack)->previous->next = NULL;
 	while (*stack)
 	{
 		temp = (*stack)->next;
@@ -41,6 +45,17 @@ void	free_and_exit(char **str, t_stack **stack)
 	free_split(str);
 	free_stack(stack);
 	ft_error("ERROR");
+}
+
+void	make_circle(t_stack **stack)
+{
+	t_stack	*last;
+
+	last = *stack;
+	while (last->next)
+		last = last->next;
+	last->next = *stack;
+	(*stack)->previous = last;
 }
 
 t_stack	*init_stack(char **argv)
@@ -60,8 +75,9 @@ t_stack	*init_stack(char **argv)
 			if (!valid_input(str[n]))
 				free_and_exit(str, &stack_a);
 			stack_tmp = malloc(sizeof(t_stack));
+			if (!stack_tmp)
+				return (NULL);
 			stack_tmp->number = ft_atol(str[n]);
-			stack_tmp->next = NULL;
 			add_to_stack_bot(&stack_a, stack_tmp);
 			n++;
 		}

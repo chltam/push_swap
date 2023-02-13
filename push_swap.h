@@ -14,12 +14,14 @@
 
 # include "./libft/libft.h"
 # include <limits.h>
+# include <stdio.h>
 
 typedef struct s_stack
 {
 	long int		number;
 	int				index;
 	struct s_stack	*next;
+	struct s_stack	*previous;
 }	t_stack;
 
 t_stack	*init_stack(char **argv);
@@ -28,8 +30,11 @@ void	free_stack(t_stack **stack);
 long int	ft_atol(const char *nptr);
 int		valid_input(char *str);
 void	valid_number(t_stack **stack);
+void	make_circle(t_stack **stack);
+t_stack	*last_node(t_stack *stack);
 void	add_to_stack_bot(t_stack **stack, t_stack *new);
 void	add_to_stack_top(t_stack **stack, t_stack *new);
-void	swap_node(t_stack **head, t_stack *second);
+void	swap_node(t_stack **head);
+void	push_stack(t_stack **stack_out, t_stack **stack_in);
 
 #endif

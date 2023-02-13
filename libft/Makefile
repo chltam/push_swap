@@ -12,7 +12,7 @@
 Library := libft
 NAME := libft.a
 CFLAGS := -Werror -Wall -Wextra
-CC := cc
+CC := @cc
 files := ft_isalpha.c \
 		ft_memchr.c \
 		ft_split.c \
@@ -64,9 +64,9 @@ object_files_bonus :=$(files_bonus:.c=.o)
 
 
 $(NAME): $(object_files)
-	make -C ft_printf
-	cp ./ft_printf/libftprintf.a $(NAME)
-	ar -rcs $(NAME) $(object_files)
+	@make -C ft_printf
+	@cp ./ft_printf/libftprintf.a $(NAME)
+	@ar -rcs $(NAME) $(object_files)
 bonus: $(object_files_bonus)
 	ar -rcs $(NAME) $(object_files_bonus)
 all: $(NAME)
