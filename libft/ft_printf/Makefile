@@ -10,7 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 NAME := libftprintf.a
-CC := cc
+CC := @@cc
 CFLAGS := -Werror -Wextra -Wall
 SRCS := ft_printf.c \
 		print_char.c \
@@ -18,7 +18,7 @@ SRCS := ft_printf.c \
 		print_hex.c
 OBJS := $(SRCS:.c=.o)
 $(NAME): $(OBJS)
-		ar -rcs $(NAME) $(OBJS)
+		@@ar -rcs $(NAME) $(OBJS)
 		@echo "\033[0;92mlibftprintf.a compiled.\033[0;039m"
 		
 

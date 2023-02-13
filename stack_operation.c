@@ -11,12 +11,26 @@
 /* ************************************************************************** */
 #include "push_swap.h"
 
+
+t_stack	*last_node(t_stack *stack)
+{
+	t_stack *temp;
+
+	temp = stack;
+	while (temp->next != stack)
+		temp = temp->next;
+	return (temp);
+}
+
 void	add_to_stack_bot(t_stack **stack, t_stack *new)
 {
 	t_stack	*last;
 
 	if (*stack == NULL)
+	{
 		*stack = new;
+		(*stack)->next = NULL;
+	}
 	else
 	{
 		last = *stack;
@@ -24,29 +38,104 @@ void	add_to_stack_bot(t_stack **stack, t_stack *new)
 			last = last->next;
 		last->next = new;
 		new->next = NULL;
+		new->previous = last; //double circular
 	}
 }
 
-void	add_to_stack_top(t_stack **stack, t_stack *new)
+void	single_to_stack(t_stack **stack_out, t_stack **stack_in)
 {
-	if (*stack == NULL)
-		*stack = new;
-	else
-	{
-		new->next = *stack;
-		*stack = new;
-	}
+	(*stack_out)->next = *stack_in;
+	(*stack_out)->previous = (*stack_in)->previous;
+	(*stack_in)->previous->next = *stack_out;
+	(*stack_in)->previous = *stack_out;
+	*stack_in = *stack_out;
+	*stack_out = NULL;
 }
 
-void	swap_node(t_stack **head, t_stack *second)
+void	swap_node(t_stack **head)
 {
-	if (!*head || !(*head)->next)
+	t_stack	*second;
+
+	if (!*head || (*head)->next == *head)
 	{
-		write(1, "here\n", 5);
+		printf("do nothing\n");
 		return ;
 	}
-	(*head)->next = second->next;
-	second->next = *head;
-	*head = second;
+	second = (*head)->next;
 
+	(*head)->next = second->next;
+	second->next->previous = *head;
+	(*head)->previous->next = second;
+	second->previous = (*head)->previous;
+	second->next = *head;
+	(*head)->previous = second;
+	*head = second;
+}
+
+void	push_stack(t_stack **stack_out, t_stack **stack_in)
+{
+	t_stack	*stack_out_second;
+
+	if (!*stack_out)
+		return ;
+
+	if (!*stack_in)
+	{
+		if ((*stack_out)->next == *stack_out)
+		{
+			*stack_in = *stack_out;
+			*stack_out = NULL;
+		}
+		else
+		{
+			(*stack_out)->next->previous = (*stack_out)->previous;
+			(*stack_out)->previous->next = (*stack_out)->next;
+			*stack_in = *stack_out;
+			*stack_out = (*stack_out)->next;
+			(*stack_in)->next = *stack_in;
+			(*stack_in)->previous = *stack_in;
+		}
+	}
+	else if ((*stack_out)->next == *stack_out)
+	{
+		// (*stack_out)->next = *stack_in;
+		// (*stack_out)->previous = (*stack_in)->previous;
+		// (*stack_in)->previous->next = *stack_out;
+		// (*stack_in)->previous = *stack_out;
+		// *stack_in = *stack_out;
+		// *stack_out = NULL;
+
+		// (*stack_out)->next->previous = (*stack_out)->previous;
+		// (*stack_out)->previous->next = (*stack_out)->next;
+		// (*stack_out)->previous = (*stack_in)->previous;
+		// (*stack_in)->previous->next = (*stack_out);
+		// *stack_out = (*stack_out)->next;
+		// (*stack_in)->previous->next->next = *stack_in;
+		// *stack_in = (*stack_in)->previous->next;
+		// (*stack_in)->next->previous = *stack_in;
+
+		single_to_stack(stack_out, stack_in);
+
+	}
+	else
+	{
+		(*stack_out)->next->previous = (*stack_out)->previous;
+		(*stack_out)->previous->next = (*stack_out)->next;
+		(*stack_out)->previous = (*stack_in)->previous;
+		(*stack_in)->previous->next = (*stack_out);
+		*stack_out = (*stack_out)->next;
+		(*stack_in)->previous->next->next = *stack_in;
+		*stack_in = (*stack_in)->previous->next;
+		(*stack_in)->next->previous = *stack_in;
+
+		// (*stack_out)->next = *stack_in;
+		// (*stack_out)->previous = (*stack_in)->previous;
+		// (*stack_in)->previous->next = *stack_out;
+		// (*stack_in)->previous = *stack_out;
+		// *stack_in = *stack_out;
+		// *stack_out = NULL;
+	}
+
+
+	
 }
