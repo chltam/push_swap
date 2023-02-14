@@ -33,13 +33,6 @@ void	print_stack(t_stack *stack_a, t_stack *stack_b)
 		temp_a->previous->next = NULL;
 	if (temp_b)
 		temp_b->previous->next = NULL;
-	// while (temp_a->next != stack_a)
-	// {
-	// 	printf("%ld\n", temp_a->number);
-	// 	temp_a = temp_a->next;
-	// 	if (temp_a->next == stack_a)
-	// 		printf("%ld\n", temp_a->number);
-	// }
 	while (temp_a || temp_b)
 	{
 		if (temp_a)
@@ -48,7 +41,7 @@ void	print_stack(t_stack *stack_a, t_stack *stack_b)
 			temp_a = temp_a->next;
 		}
 		else
-			printf("    ");
+			printf("|    ");
 		if (temp_b)
 		{
 			printf("%ld\n", temp_b->number);
@@ -57,10 +50,14 @@ void	print_stack(t_stack *stack_a, t_stack *stack_b)
 		else
 			printf("\n");
 	}
-
+	if (stack_a)
+		stack_a->previous->next = stack_a;
+	if (stack_b)
+		stack_b->previous->next = stack_b;
 
 	printf("------\n");
 	printf("a   b\n");
+	printf("\n");
 }
 
 int	main(int argc, char **argv)
@@ -71,31 +68,22 @@ int	main(int argc, char **argv)
 	if (argc == 1)
 		return (0);
 	stack_a = init_stack(&argv[1]);
-	// stack_a = NULL;
 	stack_b = NULL; //test stack_b need set back to NULL
 	//stack_b = init_stack(&argv[1]);
 
 	valid_number(&stack_a);
 	make_circle(&stack_a);
-	// valid_number(&stack_b);
-	//make_circle(&stack_b);
 	
 	// t_stack	*tmp = stack_a;
 	//printf("last number b4 swap = %ld\n", tmp->number);
-	// swap_node(&stack_a);
-
-	//print_stack(stack_a, stack_b);
-	push_stack(&stack_a, &stack_b);
-	push_stack(&stack_a, &stack_b);
-	push_stack(&stack_a, &stack_b);
-	push_stack(&stack_a, &stack_b);
-	push_stack(&stack_a, &stack_b);
-	push_stack(&stack_b, &stack_a);
-	
-	// printf("b = %p\n", stack_a);
-	// printf("b next = %p\n", stack_a->next);
-	// printf("b previous = %p\n", stack_a->previous);
-	
+	 swap_node(&stack_a);
+	 push_action(&stack_a, &stack_b, 'b');
+	 push_action(&stack_a, &stack_b, 'b');
+	// push_action(&stack_a, &stack_b, 'b');
+	// swap_action(&stack_a, &stack_b, 'a');
+	// print_stack(stack_a, stack_b);
+	// rotate_action(&stack_a, &stack_b, 'b');
+	 rotate_action(&stack_a, &stack_b, 'r');
 	print_stack(stack_a, stack_b);
 	
 
