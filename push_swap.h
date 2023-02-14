@@ -36,5 +36,9 @@ void	add_to_stack_bot(t_stack **stack, t_stack *new);
 void	add_to_stack_top(t_stack **stack, t_stack *new);
 void	swap_node(t_stack **head);
 void	push_stack(t_stack **stack_out, t_stack **stack_in);
+void	push_action(t_stack **stack_a, t_stack **stack_b, char flag);
+void	swap_action(t_stack **stack_a, t_stack **stack_b, char flag);
+void	rotate_action(t_stack **stack_a, t_stack **stack_b, char flag);
+void	re_rotate_action(t_stack **stack_a, t_stack **stack_b, char flag);
 
 #endif

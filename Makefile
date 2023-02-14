@@ -13,7 +13,7 @@ NAME := push_swap
 LIBRARY := ./libft/libft.a
 CFLAGS := -Wall -Werror -Wextra
 CC := cc
-SCRS := push_swap.c init_stack.c stack_operation.c validation.c
+SCRS := push_swap.c init_stack.c basic_operation.c validation.c push.c swap.c rotate.c
 
 $(NAME) : $(SCRS)
 	@make -C libft
