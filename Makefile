@@ -3,17 +3,21 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: htam <marvin@42.fr>                        +#+  +:+       +#+         #
+#    By: htam <htam@student.42berlin.de>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/09 16:50:55 by htam              #+#    #+#              #
-#    Updated: 2023/02/09 16:50:58 by htam             ###   ########.fr        #
+#    Updated: 2023/02/16 22:10:35 by htam             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
 NAME := push_swap
 LIBRARY := ./libft/libft.a
 CFLAGS := -Wall -Werror -Wextra
 CC := cc
-SCRS := push_swap.c init_stack.c basic_operation.c validation.c push.c swap.c rotate.c
+SCRS := push_swap.c init_stack.c \
+		basic_operation.c validation.c indexing.c \
+		push.c swap.c rotate.c \
+		sort_three.c
 
 $(NAME) : $(SCRS)
 	@make -C libft

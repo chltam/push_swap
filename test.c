@@ -12,23 +12,17 @@
 #include <stdio.h>
 #include "push_swap.h"
 
-void	add_to_stack_top(t_stack **stack, t_stack *new)
-{
-	new->next = *stack;
-	*stack = new;
-}
+// void	add_to_stack_top(t_stack **stack, t_stack *new)
+// {
+// 	new->next = *stack;
+// 	*stack = new;
+// }
 
 int main()
 {
-	t_stack *s1 = NULL;
-	t_stack *s2 = malloc(sizeof(t_stack));
+	char	*str = NULL;
 
-	// s1->number = 1;
-	// s1->next = NULL;
-	s2->number = 2;
-	add_to_stack_top(&s1, s2);
-	printf("%ld\n", s1->number);
-	// printf("%ld\n", s1->next->number);
+	printf("%s", str);
 
 }
 // void	swap_node(t_stack *node1, t_stack *node2)

@@ -3,12 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: htam <marvin@42.fr>                        +#+  +:+       +#+        */
+/*   By: htam <htam@student.42berlin.de>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 16:57:20 by htam              #+#    #+#             */
-/*   Updated: 2023/02/08 16:57:22 by htam             ###   ########.fr       */
+/*   Updated: 2023/02/16 23:16:35 by htam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "push_swap.h"
 #include <stdio.h>
 
@@ -37,14 +38,14 @@ void	print_stack(t_stack *stack_a, t_stack *stack_b)
 	{
 		if (temp_a)
 		{
-			printf("%ld   ", temp_a->number);
+			printf("%ld(%d)   ", temp_a->number, temp_a->index);
 			temp_a = temp_a->next;
 		}
 		else
-			printf("|    ");
+			printf("    ");
 		if (temp_b)
 		{
-			printf("%ld\n", temp_b->number);
+			printf("%ld(%d)\n", temp_b->number, temp_b->index);
 			temp_b = temp_b->next;
 		}
 		else
@@ -55,9 +56,39 @@ void	print_stack(t_stack *stack_a, t_stack *stack_b)
 	if (stack_b)
 		stack_b->previous->next = stack_b;
 
-	printf("------\n");
-	printf("a   b\n");
+	printf("-----------\n");
+	printf(" a      b\n");
 	printf("\n");
+}
+
+int	is_sorted(t_stack *stack)
+{
+	t_stack	*temp;
+
+	temp = stack;
+	stack->previous->next = NULL;
+	while (stack)
+	{
+		
+		if (stack->next && stack->next->number < stack->number)
+		{
+			temp->previous->next = temp;
+			return (0);
+		}
+		stack = stack->next;
+	}
+	temp->previous->next = temp;
+	return (1);
+}
+
+void	size_matter(t_stack **stack_a, t_stack **stack_b, size_t size)
+{
+	if (size == 1)
+		return ;
+	if (size == 2)
+		swap_action(stack_a, stack_b, 'a');
+	if (size == 3)
+		sort_three(stack_a, stack_b);
 }
 
 int	main(int argc, char **argv)
@@ -68,29 +99,17 @@ int	main(int argc, char **argv)
 	if (argc == 1)
 		return (0);
 	stack_a = init_stack(&argv[1]);
-	stack_b = NULL; //test stack_b need set back to NULL
-	//stack_b = init_stack(&argv[1]);
-
+	stack_b = NULL;
 	valid_number(&stack_a);
 	make_circle(&stack_a);
-	
-	// t_stack	*tmp = stack_a;
-	//printf("last number b4 swap = %ld\n", tmp->number);
-	 swap_node(&stack_a);
-	 push_action(&stack_a, &stack_b, 'b');
-	 push_action(&stack_a, &stack_b, 'b');
-	// push_action(&stack_a, &stack_b, 'b');
-	// swap_action(&stack_a, &stack_b, 'a');
-	// print_stack(stack_a, stack_b);
-	// rotate_action(&stack_a, &stack_b, 'b');
-	 rotate_action(&stack_a, &stack_b, 'r');
+	size_t n = set_index(stack_a);
+
+	if (!is_sorted(stack_a))
+	{
+		size_matter(&stack_a, &stack_b, set_index(stack_a));
+	}
+
 	print_stack(stack_a, stack_b);
-	
-
-
-	
-	
-	
 	free_stack(&stack_a);
-	free_stack(&stack_b);
+	return (0);
 }

@@ -3,12 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   swap.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: htam <marvin@42.fr>                        +#+  +:+       +#+        */
+/*   By: htam <htam@student.42berlin.de>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 21:44:20 by htam              #+#    #+#             */
-/*   Updated: 2023/02/13 21:44:22 by htam             ###   ########.fr       */
+/*   Updated: 2023/02/16 22:10:16 by htam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "push_swap.h"
 
 void	swap_node(t_stack **head)
@@ -16,10 +17,7 @@ void	swap_node(t_stack **head)
 	t_stack	*second;
 
 	if (!*head || (*head)->next == *head)
-	{
-		printf("do nothing\n");
 		return ;
-	}
 	second = (*head)->next;
 	(*head)->next = second->next;
 	second->next->previous = *head;

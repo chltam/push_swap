@@ -3,12 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   basic_operation.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: htam <marvin@42.fr>                        +#+  +:+       +#+        */
+/*   By: htam <htam@student.42berlin.de>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 21:25:22 by htam              #+#    #+#             */
-/*   Updated: 2023/02/13 20:18:01 by htam             ###   ########.fr       */
+/*   Updated: 2023/02/16 22:25:34 by htam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "push_swap.h"
 
 t_stack	*last_node(t_stack *stack)
@@ -29,6 +30,8 @@ void	add_to_stack_bot(t_stack **stack, t_stack *new)
 	{
 		*stack = new;
 		(*stack)->next = NULL;
+		(*stack)->previous = NULL;
+		(*stack)->index = 0;
 	}
 	else
 	{
@@ -38,5 +41,6 @@ void	add_to_stack_bot(t_stack **stack, t_stack *new)
 		last->next = new;
 		new->next = NULL;
 		new->previous = last;
+		new->index = 0;
 	}
 }

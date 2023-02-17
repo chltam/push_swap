@@ -3,12 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   rotate.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: htam <marvin@42.fr>                        +#+  +:+       +#+        */
+/*   By: htam <htam@student.42berlin.de>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 21:51:58 by htam              #+#    #+#             */
-/*   Updated: 2023/02/13 21:51:59 by htam             ###   ########.fr       */
+/*   Updated: 2023/02/16 22:10:44 by htam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "push_swap.h"
 
 void	rotate_action(t_stack **stack_a, t_stack **stack_b, char flag)
