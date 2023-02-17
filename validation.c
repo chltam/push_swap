@@ -3,12 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   validation.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: htam <marvin@42.fr>                        +#+  +:+       +#+        */
+/*   By: htam <htam@student.42berlin.de>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 21:34:51 by htam              #+#    #+#             */
-/*   Updated: 2023/02/09 21:34:53 by htam             ###   ########.fr       */
+/*   Updated: 2023/02/16 22:09:37 by htam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "push_swap.h"
 
 long int	ft_atol(const char *nptr)
@@ -62,7 +63,7 @@ void	valid_number(t_stack **stack)
 		if (head->number > INT_MAX)
 		{
 			free_stack(stack);
-			ft_error("ERROR");
+			ft_error("Error");
 		}
 		current = head->next;
 		while (current)
@@ -70,7 +71,7 @@ void	valid_number(t_stack **stack)
 			if (head->number == current->number)
 			{
 				free_stack(stack);
-				ft_error("ERROR");
+				ft_error("Error");
 			}
 			current = current->next;
 		}

@@ -3,12 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   init_stack.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: htam <marvin@42.fr>                        +#+  +:+       +#+        */
+/*   By: htam <htam@student.42berlin.de>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 16:59:41 by htam              #+#    #+#             */
-/*   Updated: 2023/02/09 16:59:43 by htam             ###   ########.fr       */
+/*   Updated: 2023/02/16 22:09:54 by htam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "push_swap.h"
 
 void	free_split(char **str)
@@ -44,7 +45,7 @@ void	free_and_exit(char **str, t_stack **stack)
 {
 	free_split(str);
 	free_stack(stack);
-	ft_error("ERROR");
+	ft_error("Error");
 }
 
 void	make_circle(t_stack **stack)

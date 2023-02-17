@@ -3,12 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   push.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: htam <marvin@42.fr>                        +#+  +:+       +#+        */
+/*   By: htam <htam@student.42berlin.de>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 20:13:25 by htam              #+#    #+#             */
-/*   Updated: 2023/02/13 20:13:27 by htam             ###   ########.fr       */
+/*   Updated: 2023/02/16 22:10:25 by htam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "push_swap.h"
 
 void	single_to_stack(t_stack **stack_out, t_stack **stack_in)
