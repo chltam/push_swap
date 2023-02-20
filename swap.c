@@ -6,7 +6,7 @@
 /*   By: htam <htam@student.42berlin.de>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 21:44:20 by htam              #+#    #+#             */
-/*   Updated: 2023/02/16 22:10:16 by htam             ###   ########.fr       */
+/*   Updated: 2023/02/20 15:47:51 by htam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,22 +28,42 @@ void	swap_node(t_stack **head)
 	*head = second;
 }
 
-void	swap_action(t_stack **stack_a, t_stack **stack_b, char flag)
+// void	swap_action(t_stack **stack_a, t_stack **stack_b, char flag)
+// {
+// 	if (flag == 'a')
+// 	{
+// 		swap_node(stack_a);
+// 		ft_printf("sa\n");
+// 	}
+// 	else if (flag == 'b')
+// 	{
+// 		swap_node(stack_b);
+// 		ft_printf("sb\n");
+// 	}
+// 	else if (flag == 's')
+// 	{
+// 		swap_node(stack_a);
+// 		swap_node(stack_b);
+// 		ft_printf("ss\n");
+// 	}
+// }
+
+void	swap_action(t_info *info_a, t_info *info_b, char flag)
 {
 	if (flag == 'a')
 	{
-		swap_node(stack_a);
+		swap_node(&info_a->head);
 		ft_printf("sa\n");
 	}
 	else if (flag == 'b')
 	{
-		swap_node(stack_b);
+		swap_node(&info_b->head);
 		ft_printf("sb\n");
 	}
 	else if (flag == 's')
 	{
-		swap_node(stack_a);
-		swap_node(stack_b);
+		swap_node(&info_a->head);
+		swap_node(&info_b->head);
 		ft_printf("ss\n");
 	}
 }
