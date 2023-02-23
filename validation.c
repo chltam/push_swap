@@ -6,7 +6,7 @@
 /*   By: htam <htam@student.42berlin.de>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 21:34:51 by htam              #+#    #+#             */
-/*   Updated: 2023/02/16 22:09:37 by htam             ###   ########.fr       */
+/*   Updated: 2023/02/22 14:43:34 by htam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	valid_number(t_stack **stack)
 	head = *stack;
 	while (head)
 	{
-		if (head->number > INT_MAX)
+		if (head->number > INT_MAX || head->number < INT_MIN)
 		{
 			free_stack(stack);
 			ft_error("Error");

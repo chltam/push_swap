@@ -3,13 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   test.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: htam <marvin@42.fr>                        +#+  +:+       +#+        */
+/*   By: htam <htam@student.42berlin.de>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 19:50:21 by htam              #+#    #+#             */
-/*   Updated: 2023/02/06 19:50:22 by htam             ###   ########.fr       */
+/*   Updated: 2023/02/23 14:19:39 by htam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <stdio.h>
+
 #include "push_swap.h"
 
 // void	add_to_stack_top(t_stack **stack, t_stack *new)
@@ -20,9 +20,19 @@
 
 int main()
 {
-	char	*str = NULL;
+	
+	int n;
+	int m;
 
-	printf("%s", str);
+	n = 0;
+	m = 1;
+	while (({n++ != 10; printf("%d\n", m);}))
+	{
+		
+	}
+	
+	
+	
 
 }
 // void	swap_node(t_stack *node1, t_stack *node2)
