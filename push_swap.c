@@ -6,7 +6,7 @@
 /*   By: htam <htam@student.42berlin.de>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 16:57:20 by htam              #+#    #+#             */
-/*   Updated: 2023/02/20 20:38:24 by htam             ###   ########.fr       */
+/*   Updated: 2023/02/23 22:38:45 by htam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,49 +61,13 @@ void	print_stack(t_stack *stack_a, t_stack *stack_b)
 	printf("\n");
 }
 
-// void	print_stack_test(t_info *info_a, t_info *info_b)
-// {
-// 	t_stack	*temp_a;
-// 	t_stack	*temp_b;
-
-// 	temp_a = info_a->head;
-// 	temp_b = info_b->head;
-
-// 	if (temp_a)
-// 		temp_a->previous->next = NULL;
-// 	if (temp_b)
-// 		temp_b->previous->next = NULL;
-// 	while (temp_a || temp_b)
-// 	{
-// 		if (temp_a)
-// 		{
-// 			printf("%ld(%d)   ", temp_a->number, temp_a->index);
-// 			temp_a = temp_a->next;
-// 		}
-// 		else
-// 			printf("       ");
-// 		if (temp_b)
-// 		{
-// 			printf("%ld(%d)\n", temp_b->number, temp_b->index);
-// 			temp_b = temp_b->next;
-// 		}
-// 		else
-// 			printf("\n");
-// 	}
-// 	if (info_a->head)
-// 		info_a->head->previous->next = info_a->head;
-// 	if (info_b->head)
-// 		info_b->head->previous->next = info_b->head;
-
-// 	printf("-----------\n");
-// 	printf(" a      b\n");
-// 	printf("\n");
-// }
 
 int	is_sorted(t_stack *stack)
 {
 	t_stack	*temp;
 
+	if (!stack)
+		return (0);
 	temp = stack;
 	stack->previous->next = NULL;
 	while (stack)
@@ -135,6 +99,8 @@ void	size_matter(t_info *info_a, t_info *info_b)
 		sort_five(info_a, info_b);
 	if (info_a->size > 5)
 		sort_more(info_a, info_b);
+	// if (info_a->size > 5)
+	// 	radix_sort(info_a, info_b);
 }
 
 int	main(int argc, char **argv)

@@ -6,7 +6,7 @@
 /*   By: htam <htam@student.42berlin.de>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 16:38:20 by htam              #+#    #+#             */
-/*   Updated: 2023/02/20 20:37:52 by htam             ###   ########.fr       */
+/*   Updated: 2023/02/23 22:34:18 by htam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@ size_t		set_index(t_stack *stack);
 t_stack		*last_node(t_stack *stack);
 void		add_to_stack_bot(t_stack **stack, t_stack *new);
 size_t		count_node(t_stack *stack);
-void		add_to_stack_top(t_stack **stack, t_stack *new);
 void		push_action(t_info *info_a, t_info *info_b, char flag);
 void		rotate_action(t_info *info_a, t_info *info_b, char flag);
 void	re_rotate_action(t_info *info_a, t_info *info_b, char flag);
@@ -53,6 +52,8 @@ void	sort_four(t_info *info_a, t_info *info_b);
 void	sort_five(t_info *info_a, t_info *info_b);
 int			is_sorted(t_stack *stack);
 void	sort_more(t_info *info_a, t_info *info_b);
+void	radix_sort(t_info *info_a, t_info *info_b);
+int	find_max(t_stack *stack);
 
 /*test*/
 void		print_stack(t_stack *stack_a, t_stack *stack_b);
