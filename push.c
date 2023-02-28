@@ -6,7 +6,7 @@
 /*   By: htam <htam@student.42berlin.de>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 20:13:25 by htam              #+#    #+#             */
-/*   Updated: 2023/02/20 15:47:40 by htam             ###   ########.fr       */
+/*   Updated: 2023/02/24 20:08:47 by htam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,20 +60,6 @@ void	push_stack(t_stack **stack_out, t_stack **stack_in)
 	else
 		stack_to_stack(stack_out, stack_in);
 }
-
-// void	push_action(t_stack **stack_a, t_stack **stack_b, char flag)
-// {
-// 	if (flag == 'a')
-// 	{
-// 		push_stack(stack_b, stack_a);
-// 		ft_printf("pa\n");
-// 	}
-// 	else if (flag == 'b')
-// 	{
-// 		push_stack(stack_a, stack_b);
-// 		ft_printf("pb\n");
-// 	}
-// }
 
 void	push_action(t_info *info_a, t_info *info_b, char flag)
 {

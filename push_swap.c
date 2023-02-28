@@ -6,22 +6,14 @@
 /*   By: htam <htam@student.42berlin.de>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 16:57:20 by htam              #+#    #+#             */
-/*   Updated: 2023/02/23 22:38:45 by htam             ###   ########.fr       */
+/*   Updated: 2023/02/24 19:16:03 by htam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include <stdio.h>
 
-void	ft_error(char *str)
-{
-	write(2, "\033[0;31m", 8);
-	write(2, str, ft_strlen(str));
-	write(2, "\033[0;39m", 8);
-	write(2, "\n", 1);
-	exit(EXIT_FAILURE);
-}
-
+/*
 void	print_stack(t_stack *stack_a, t_stack *stack_b)
 {
 	t_stack	*temp_a;
@@ -60,7 +52,15 @@ void	print_stack(t_stack *stack_a, t_stack *stack_b)
 	printf(" a      b\n");
 	printf("\n");
 }
-
+*/
+void	ft_error(char *str)
+{
+	write(2, "\033[0;31m", 8);
+	write(2, str, ft_strlen(str));
+	write(2, "\033[0;39m", 8);
+	write(2, "\n", 1);
+	exit(EXIT_FAILURE);
+}
 
 int	is_sorted(t_stack *stack)
 {
@@ -71,8 +71,7 @@ int	is_sorted(t_stack *stack)
 	temp = stack;
 	stack->previous->next = NULL;
 	while (stack)
-	{
-		
+	{	
 		if (stack->next && stack->next->number < stack->number)
 		{
 			temp->previous->next = temp;
@@ -83,7 +82,6 @@ int	is_sorted(t_stack *stack)
 	temp->previous->next = temp;
 	return (1);
 }
-
 
 void	size_matter(t_info *info_a, t_info *info_b)
 {
@@ -97,16 +95,20 @@ void	size_matter(t_info *info_a, t_info *info_b)
 		sort_four(info_a, info_b);
 	if (info_a->size == 5)
 		sort_five(info_a, info_b);
-	if (info_a->size > 5)
-		sort_more(info_a, info_b);
-	// if (info_a->size > 5)
-	// 	radix_sort(info_a, info_b);
+	if (info_a->size > 5 && info_a->size <= 10)
+		sort_more(info_a, info_b, 1);
+	if (info_a->size > 10 && info_a->size < 1700)
+		sort_more(info_a, info_b, 0.0875 * info_a->size + 6);
+	if (info_a->size >= 1700)
+		radix_sort(info_a, info_b);
+	while (!is_sorted(info_a->head))
+		re_rotate_action(info_a, info_b, 'a');
 }
 
 int	main(int argc, char **argv)
 {
-	t_info info_a;
-	t_info info_b;
+	t_info	info_a;
+	t_info	info_b;
 
 	if (argc == 1)
 		return (0);
@@ -119,9 +121,6 @@ int	main(int argc, char **argv)
 	info_b.size = count_node(info_b.head);
 	if (!is_sorted(info_a.head))
 		size_matter(&info_a, &info_b);
-
-	// print_stack(info_a.head, info_b.head);
-
 	free_stack(&info_a.head);
 	free_stack(&info_b.head);
 	return (0);

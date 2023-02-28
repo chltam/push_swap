@@ -1,14 +1,15 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    makefile                                           :+:      :+:    :+:    #
+#    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: htam <marvin@42.fr>                        +#+  +:+       +#+         #
+#    By: htam <htam@student.42berlin.de>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/28 11:49:25 by htam              #+#    #+#              #
-#    Updated: 2022/11/28 11:49:27 by htam             ###   ########.fr        #
+#    Updated: 2023/02/26 18:51:18 by htam             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
 Library := libft
 NAME := libft.a
 CFLAGS := -Werror -Wall -Wextra
@@ -74,6 +75,6 @@ clean:
 	rm -f $(object_files) $(object_files_bonus)
 fclean:
 	make fclean -C ft_printf
-	rm -f $(object_files) $(object_files_bonus)
-	rm -f libft.a
+	@rm -f $(object_files) $(object_files_bonus)
+	@rm -f libft.a
 re: fclean all

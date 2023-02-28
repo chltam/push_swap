@@ -6,7 +6,7 @@
 /*   By: htam <htam@student.42berlin.de>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 17:28:14 by htam              #+#    #+#             */
-/*   Updated: 2023/02/22 14:39:52 by htam             ###   ########.fr       */
+/*   Updated: 2023/02/24 18:22:18 by htam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	sort_three(t_info *info_a, t_info *info_b, char flag)
 
 void	sort_four(t_info *info_a, t_info *info_b)
 {
-	t_stack **stack;
+	t_stack	**stack;
 
 	stack = &info_a->head;
 	if ((*stack)->index == 3)
@@ -52,14 +52,15 @@ void	sort_four(t_info *info_a, t_info *info_b)
 
 void	sort_five(t_info *info_a, t_info *info_b)
 {
-	t_stack **stack;
+	t_stack	**stack;
 
 	stack = &info_a->head;
 	while ((*stack)->index != 5)
 	{
 		if ((*stack)->next->index == 5 || (*stack)->next->next->index == 5)
 			rotate_action(info_a, info_b, 'a');
-		if ((*stack)->previous->index == 5 || (*stack)->previous->previous->index == 5)
+		if ((*stack)->previous->index == 5
+			|| (*stack)->previous->previous->index == 5)
 			re_rotate_action(info_a, info_b, 'a');
 	}
 	push_action(info_a, info_b, 'b');
