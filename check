@@ -1,9 +1,0 @@
-#!/bin/bash
-
-if [ $# -eq 0 ]
-  then
-    echo "gimme number"
-
-fi
-
-./push_swap $1 | ./checker_linux $1
